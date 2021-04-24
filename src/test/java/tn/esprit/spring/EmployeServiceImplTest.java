@@ -4,11 +4,16 @@ package tn.esprit.spring;
 
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.text.ParseException;
 import java.util.List;
 
-import org.junit.Assert;
+
+
+
+
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,35 +30,50 @@ import tn.esprit.spring.services.IEmployeService;
 @SpringBootTest
 public class EmployeServiceImplTest {
 	
-	
+	Integer idE;
 	@Autowired 
 	IEmployeService us;
 	
 	
 	@Test
-	public void testAddEmploye()  {
-		
-		Employe em = new Employe("gaied", "med", "gaied@esprit.tn", "123456", Role.ADMINISTRATEUR); 
-		Employe employeAdded = us.addEmploye(em); 
-		assertEquals(em.getPrenom(),employeAdded.getNom());
+	public void testAjouterEmploye()  {      
+		 idE=us.addEmploye(new Employe("gaied", "mohamed","mohamed@esprit.tn","123456", Role.INGENIEUR));
+		assertNotNull(idE);
 	}
 	
 	@Test
 	public void testRetrieveAllEmployes() {
 		List<Employe> listEmployes = us.retrieveAllEmployes(); 
 		 
-		assertEquals(4, listEmployes.size());
+		assertEquals(3, listEmployes.size());
 	}
 
 	@Test
-	public void testModifyUser() throws ParseException   {
+	public void testModifyUser() {
 		
 		Employe u = new Employe("gaied", "mohamed","test@esprit.tn","12345", Role.INGENIEUR); 
 		Employe userUpdated  = us.updateEmploye(u); 
-		assertEquals(u.getNom(), userUpdated.getPrenom());
+		assertEquals(u.getPrenom(), userUpdated.getPrenom());
 	}
 		
+	@Test
+	public void testGetEmployeById() {
+		Employe e =us.getEmployeeById(1); 
+		assertEquals(1, e.getId());
+	}
 	
+	@Test
+	public void testDeleteEmployeById()
+	{
+		if(idE!=null){
+		int i = us.deleteEmployeById(idE);
+		
+		assertEquals(0, i);}
+		else {
+			int i = us.deleteEmployeById(22);
+			
+			assertEquals(0, i);}
+	}
 }
     
 

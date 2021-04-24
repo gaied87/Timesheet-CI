@@ -14,12 +14,14 @@ import tn.esprit.spring.entities.Role;
 public interface IEmployeService {
 	
 	
-	public String getEmployePrenomById(int employeId);
-	public void deleteEmployeById(int employeId);
-	 public Employe updateEmploye(Employe em);
-	 public Employe addEmploye(Employe em);
-	 public List<Employe> retrieveAllEmployes();
-	 public List<Employe> retrieveEmployesByRole(Role role);
+
+	public Employe getEmployeeById(int employeId);
+	public Integer addEmploye(Employe employe);
+	public Employe updateEmploye(Employe em);
+	public List<Employe> retrieveAllEmployes();
+	public int deleteEmployeById(int employeId);
+	
+
 	
 	
 
