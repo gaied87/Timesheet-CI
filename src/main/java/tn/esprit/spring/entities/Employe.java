@@ -27,7 +27,7 @@ public class Employe implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	//@SequenceGenerator(name="sq")
+	//@SequenceGenerator(name="s")
 	private int id;
 	
 	private String prenom;
