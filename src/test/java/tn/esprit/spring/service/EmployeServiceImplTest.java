@@ -1,5 +1,5 @@
 
-package tn.esprit.spring;
+package tn.esprit.spring.service;
 
 
 
@@ -45,11 +45,11 @@ public class EmployeServiceImplTest {
 	public void testRetrieveAllEmployes() {
 		List<Employe> listEmployes = us.retrieveAllEmployes(); 
 		 
-		assertEquals(3, listEmployes.size());
+		assertEquals(4, listEmployes.size());
 	}
 
 	@Test
-	public void testModifyUser() {
+	public void testModifyEmploye() {
 		
 		Employe u = new Employe("gaied", "mohamed","test@esprit.tn","12345", Role.INGENIEUR); 
 		Employe userUpdated  = us.updateEmploye(u); 
@@ -58,8 +58,8 @@ public class EmployeServiceImplTest {
 		
 	@Test
 	public void testGetEmployeById() {
-		Employe e =us.getEmployeeById(1); 
-		assertEquals(1, e.getId());
+		Employe e =us.getEmployeeById(2); 
+		assertEquals(2, e.getId());
 	}
 	
 	@Test
@@ -70,7 +70,7 @@ public class EmployeServiceImplTest {
 		
 		assertEquals(0, i);}
 		else {
-			int i = us.deleteEmployeById(22);
+			int i = us.deleteEmployeById(1);
 			
 			assertEquals(0, i);}
 	}
